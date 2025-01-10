@@ -1,3 +1,4 @@
+import Card from "./Card";
 function Home() {
   return (
     <>
@@ -10,7 +11,28 @@ function Home() {
         </div>
         <div className="h-screen">
           <div className="text-9xl px-20 font-bold">How does it Work?</div>
-          <div className=""></div>
+          <div className="p-20 flex gap-10">
+            <Card
+              image={"src/assets/card1.jpg"}
+              head={"Image is Captured"}
+              body={"Image is Captured and sent to backend for processing"}
+            />
+            <Card
+              image={"./src/assets/card2.jpg"}
+              head={"Image conversion"}
+              body={"Image is converted into Embeddings"}
+            />
+            <Card
+              image={"./src/assets/card3.jpg"}
+              head={"Embeddings are stored"}
+              body={"Embeddings are stored with user-name "}
+            />
+            <Card
+              image={"./src/assets/card4.jpg"}
+              head={"Searching..."}
+              body={"these embedding are used for facial recognition"}
+            />
+          </div>
         </div>
       </div>
     </>
