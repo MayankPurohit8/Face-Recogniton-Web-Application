@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
+.message {
+  opacity: 1;
+  animation: fadeOut 1s ease-out 2s forwards;
+}

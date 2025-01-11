@@ -1,18 +1,16 @@
 import Webcam from "react-webcam";
 import { useState, useRef } from "react";
-
 function Add() {
   const webcamRef = useRef(null);
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
-
+  const [mess, setMess] = useState("");
   // Capture the webcam image
   const capture = () => {
     const ss = webcamRef.current.getScreenshot();
     setImage(ss);
   };
 
-  // Handle form submission to add a user
   const submitHandler = async () => {
     if (!image || !name) {
       alert("Please capture an image and provide a name.");
@@ -20,7 +18,7 @@ function Add() {
     }
 
     const formData = new FormData();
-    formData.append("file", dataURItoBlob(image)); // Convert base64 image to Blob
+    formData.append("file", dataURItoBlob(image));
     formData.append("name", name);
 
     try {
@@ -30,7 +28,7 @@ function Add() {
       });
       const data = await response.json();
       if (response.ok) {
-        alert(`User added with ID: ${data.user_id}`);
+        setMess("User added with name:" + name);
       } else {
         alert(`Error: ${data.error}`);
       }
@@ -40,7 +38,6 @@ function Add() {
     }
   };
 
-  // Convert base64 to blob for upload
   const dataURItoBlob = (dataURI) => {
     const byteString = atob(dataURI.split(",")[1]);
     const ab = new ArrayBuffer(byteString.length);
@@ -81,6 +78,9 @@ function Add() {
       >
         Submit
       </button>
+      <div className="w-96 h-20 bg-[#e9ecef] text-2xl flex items-center justify-center italic ">
+        {mess}
+      </div>
     </div>
   );
 }

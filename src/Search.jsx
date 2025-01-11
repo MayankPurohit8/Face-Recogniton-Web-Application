@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import Webcam from "react-webcam";
+import "./index.css";
 function Search() {
   const webcamRef = useRef(null);
+  let [name, setName] = useState("");
 
   const submitSearch = async () => {
     const ss = webcamRef.current.getScreenshot();
@@ -11,7 +13,7 @@ function Search() {
     }
 
     const formData = new FormData();
-    formData.append("file", dataURItoBlob(ss)); // Convert base64 to blob
+    formData.append("file", dataURItoBlob(ss));
 
     try {
       const response = await fetch("http://localhost:5001/search", {
@@ -20,9 +22,10 @@ function Search() {
       });
       const data = await response.json();
       if (response.ok) {
-        alert(`Matches found: ${JSON.stringify(data.matches)}`);
+        const names = data.matches.map((match) => match.name);
+        setName(names[0]);
       } else {
-        alert("No matches found");
+        setName("!No matches found!");
       }
     } catch (err) {
       console.error(err);
@@ -51,11 +54,14 @@ function Search() {
       />
       <div className="p-5">
         <button
-          className=" text-[#adb5bd] p-2 rounded-lg shadow-xl border-solid border-2 border-transparent bg-[#212529] active:bg-[#adb5bd] hover:border-gray-400"
+          className=" text-[#adb5bd] p-2 rounded-lg shadow-xl border-solid border-2 border-transparent bg-[#212529] active:bg-[#adb5bd] hover:border-gray-500 "
           onClick={submitSearch}
         >
           Search
         </button>
+      </div>
+      <div className="w-96 h-20 bg-[#e9ecef] text-4xl text-center p-3 italic ">
+        {name}
       </div>
     </div>
   );
