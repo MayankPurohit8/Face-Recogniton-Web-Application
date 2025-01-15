@@ -1,4 +1,3 @@
-
 # Facial Recognition Web Application
 
 Welcome to the **Facial Recognition Web Application**! This project is designed to provide real-time facial recognition capabilities using a **webcam**. It allows administrators to manage authorized users by adding their information and enables searching for users by their faces. The application is built using modern technologies to ensure efficiency and scalability.
@@ -28,9 +27,9 @@ Welcome to the **Facial Recognition Web Application**! This project is designed 
 - **Tailwind CSS**: Styling components for a sleek and responsive design.
 
 ### Backend:
-- **Machine Learning**: For facial recognition model training and inference.
-- **Node.js/Express**: Backend server handling API requests (example stack, update if using something else).
-- **Database**: For secure storage of user images and details (e.g., MongoDB).
+- **Flask**: Lightweight and efficient framework for API development.
+- **Python**: For implementing backend logic and model inference.
+- **Local Storage**: Used as a database for securely storing user images and details.
 
 ---
 
@@ -48,7 +47,7 @@ For a detailed walkthrough, check the [Video Demo](link_to_video).
 
 - **Node.js** (v16 or higher)
 - **npm** or **yarn**
-- Python environment (if required for the backend ML model)
+- Python environment with Flask installed
 
 ### Steps
 
@@ -58,7 +57,7 @@ For a detailed walkthrough, check the [Video Demo](link_to_video).
    cd facial-recognition-web-app
    ```
 
-2. **Install Dependencies**:
+2. **Install Frontend Dependencies**:
    ```bash
    npm install
    # Or
@@ -66,9 +65,20 @@ For a detailed walkthrough, check the [Video Demo](link_to_video).
    ```
 
 3. **Setup Backend**:
-   - Follow the instructions in the `backend` directory for setting up the server and model.
+   - Navigate to the `backend` directory:
+     ```bash
+     cd backend
+     ```
+   - Install Python dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Run the Flask server:
+     ```bash
+     flask run
+     ```
 
-4. **Start the Application**:
+4. **Start the Frontend**:
    ```bash
    npm start
    ```
@@ -83,7 +93,7 @@ For a detailed walkthrough, check the [Video Demo](link_to_video).
 This project was created to:
 - Explore the integration of machine learning models in web applications.
 - Learn how to build full-stack applications with a focus on facial recognition.
-- Provide hands-on experience with **React**, **Tailwind CSS**, and **backend integration**.
+- Provide hands-on experience with **React**, **Tailwind CSS**, and **Flask**.
 
 ---
 
